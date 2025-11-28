@@ -6,7 +6,8 @@ import subprocess
 
 import numpy as np
 import torch
-import torchaudio
+#import torchaudio
+import soundfile as sf
 from scipy.io import loadmat
 from transformers import Wav2Vec2Processor
 from transformers.models.wav2vec2.modeling_wav2vec2 import Wav2Vec2Model
@@ -187,8 +188,7 @@ if __name__ == "__main__":
         .to(device)
     )
 
-    speech_array, sampling_rate = torchaudio.load(wav_16k_path)
-    audio_data = speech_array.squeeze().numpy()
+    audio_data, sampling_rate = sf.read(wav_16k_path)
     inputs = wav2vec_processor(
         audio_data, sampling_rate=16_000, return_tensors="pt", padding=True
     )

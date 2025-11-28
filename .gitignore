@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+checkpoints/
+avatar_video/
+*.mp4
+*.jpg
+*.png
+*.webm
+*.txt*
+*.wav
